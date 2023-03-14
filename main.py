@@ -151,9 +151,6 @@ def update_transactions(
         f"https://api.youneedabudget.com/v1/budgets/{budget_id}/transactions",
         json={"transactions": [asdict(x) for x in transactions]},
     )
-    import pdb
-
-    pdb.set_trace()
     resp.raise_for_status()
 
 
