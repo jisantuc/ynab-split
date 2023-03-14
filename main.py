@@ -216,7 +216,11 @@ def parse_arguments() -> Arguments:
         "https://app.youneedabudget.com/BUDGET_ID/budget/CURR_MONTH"
     )
     parser.add_argument("budget", type=str, help=budget_help)
-    category_help = "Id of the category you want to use to split transactions into."
+    category_help = (
+        "Id of the category you want to use to split transactions into. "
+        "Enter 'choose' to choose one interactively (kinda) based on the "
+        "categories in your budget."
+    )
     parser.add_argument("target_category", type=str, help=category_help)
     parser.add_argument(
         "--since-date",
