@@ -1,0 +1,4 @@
+import requests
+
+with open("requirements.txt", "w") as outf:
+    outf.write(f"requests=={requests.__version__}")
