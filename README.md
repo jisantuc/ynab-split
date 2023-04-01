@@ -18,6 +18,10 @@ python3 main.py \
 You must have a YNAB personal access token in the `YNAB_PAT` environment variable to use this script.
 You can find all the information you need about personal access tokens [here](https://api.youneedabudget.com/#personal-access-tokens).
 
+The best way to get dependencies for the script is with [`nix`](https://nixos.org/). However,
+there's also a `requirements.txt` if that's more your style. The only thing
+required is `requests`, so non-reproducibility isn't the biggest risk in the universe.
+
 Full usage:
 
 ```
