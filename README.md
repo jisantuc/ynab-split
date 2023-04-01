@@ -1,7 +1,7 @@
 `ynab-split`
 ===
 
-Split [ynab](https://www.ynab.com/) transactions between the category they're assigned to and another category en masse.
+Split [YNAB](https://www.ynab.com/) transactions between the category they're assigned to and another category en masse.
 
 For example, to split all the transactions with a green flag since January 1, 2023, if your
 budget id is `43f9c4b8-b300-4372-ba61-16620af8b3db`, and without knowing the category you want
@@ -14,6 +14,9 @@ python3 main.py \
     43f9c4b8-b300-4372-ba61-16620af8b3db \ # budget id
     choose # you don't know the category id yet, you need help choosing it
 ```
+
+You must have a YNAB personal access token in the `YNAB_PAT` environment variable to use this script.
+You can find all the information you need about personal access tokens [here](https://api.youneedabudget.com/#personal-access-tokens).
 
 Full usage:
 
