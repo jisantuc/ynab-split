@@ -15,6 +15,19 @@ python3 main.py \
     choose # you don't know the category id yet, you need help choosing it
 ```
 
+Or, if you'd rather not have to deal with python environment things locally (hey, I get it,
+no one really does), you can use the published container image:
+
+```bash
+docker run
+    -e YNAB_PAT \ # forward the YNAB_PAT environment variable to the container
+    jisantuc/ynab-split:latest \ # name of the container
+    --since-date 2023-01-01 \ # January 1, 2023
+    --flag-color green \ # flag color green
+    43f9c4b8-b300-4372-ba61-16620af8b3db \ # budget id
+    choose # you don't know the category id yet, you need help choosing it
+```
+
 You must have a YNAB personal access token in the `YNAB_PAT` environment variable to use this script.
 You can find all the information you need about personal access tokens [here](https://api.youneedabudget.com/#personal-access-tokens).
 
