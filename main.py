@@ -147,6 +147,8 @@ def list_transactions(
 def update_transactions(
     transactions: List[Transaction], budget_id: str, session: Session
 ) -> None:
+    if not transactions:
+        raise Exception("No transactions to update. Did you flag some?")
     resp = session.patch(
         f"https://api.youneedabudget.com/v1/budgets/{budget_id}/transactions",
         json={"transactions": [asdict(x) for x in transactions]},
