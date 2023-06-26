@@ -1,5 +1,3 @@
-import requests
-
 from argparse import ArgumentParser
 from copy import deepcopy
 from dataclasses import asdict, dataclass
