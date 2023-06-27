@@ -15,6 +15,7 @@
           p.black
           p.mypy
           p.requests
+          p.types-requests
         ]);
       in
       {
