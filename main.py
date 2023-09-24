@@ -4,9 +4,10 @@ from dataclasses import asdict, dataclass
 from datetime import date, timedelta
 import os
 from typing import List, Optional
+from uuid import UUID
 
 
-from requests import Session
+from requests import Session, URLRequired
 
 
 @dataclass
@@ -56,6 +57,7 @@ class Transaction:
         "payee_name",
         "category_id",
         "subtransactions",
+        "transfer_account_id",
     ]
     id: str
     date: date
@@ -65,6 +67,7 @@ class Transaction:
     payee_name: str
     category_id: str
     subtransactions: List[Subtransaction]
+    transfer_account_id: Optional[UUID]
 
 
 def category_group_from_json(api_json: dict) -> CategoryGroup:
@@ -253,7 +256,11 @@ def main():
     category_id = prompt_for_category(
         arguments.budget_id, arguments.target_category_id, session
     )
-    transactions = list_transactions(arguments.budget_id, arguments.since_date, session)
+    transactions = [
+        tx
+        for tx in list_transactions(arguments.budget_id, arguments.since_date, session)
+        if not tx.transfer_account_id
+    ]
     split_transactions = [
         remove_flag(with_subtransactions(split_transaction(tx, category_id), tx))
         for tx in transactions
