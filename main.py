@@ -261,14 +261,14 @@ def main():
         for tx in list_transactions(arguments.budget_id, arguments.since_date, session)
         if not tx.transfer_account_id
     ]
-    print(
-        f"Total amount to be split: {sum([transaction.amount for transaction in transactions]) / 100.0}"
-    )
     split_transactions = [
         remove_flag(with_subtransactions(split_transaction(tx, category_id), tx))
         for tx in transactions
         if tx.flag_color == arguments.flag_color
     ]
+    print(
+        f"Total amount to be split: {sum([transaction.amount for transaction in split_transactions]) / 1000.0}"
+    )
     update_transactions(split_transactions, arguments.budget_id, session)
 
 
