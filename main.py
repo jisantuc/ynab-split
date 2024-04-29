@@ -256,11 +256,7 @@ def main():
     category_id = prompt_for_category(
         arguments.budget_id, arguments.target_category_id, session
     )
-    transactions = [
-        tx
-        for tx in list_transactions(arguments.budget_id, arguments.since_date, session)
-        if not tx.transfer_account_id
-    ]
+    transactions = list_transactions(arguments.budget_id, arguments.since_date, session)
     split_transactions = [
         remove_flag(with_subtransactions(split_transaction(tx, category_id), tx))
         for tx in transactions
